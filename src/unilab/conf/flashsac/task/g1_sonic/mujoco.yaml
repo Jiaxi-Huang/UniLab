@@ -1,0 +1,36 @@
+# @package _global_
+defaults:
+  - /task/g1_sonic/base
+  - _self_
+
+training:
+  sim_backend: mujoco
+algo:
+  num_envs: 4096
+  batch_size: 2048
+  updates_per_step: 4
+  replay_buffer_n: 1024
+  #learning_starts: 512
+  #actor_lr: 1.0e-4
+  #updates_per_step: 1
+  #algo_params:
+  #  temp_target_sigma: null
+  #  temp_target_entropy: -10.0
+  #  log_std_min: -6.0
+  #  log_std_max: 2.0
+env:
+  commands:
+    motion:
+      params:
+        motion_file: data/lafan1/robot_filtered
+        smpl_motion_file: data/lafan1/smpl_filtered
+        motion_store_file: data/lafan1/packed
+        encoder_sampling: mixed
+        sampling_mode: adaptive
+        adaptive_kernel_size: 1
+        adaptive_uniform_ratio: 0.5
+        adaptive_alpha: 0.05
+  events:
+    #base_mass: null
+    #base_com: null
+    encoder_bias: null
